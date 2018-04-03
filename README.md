@@ -1,2 +1,5 @@
 PROYECTO: About Me Web Aplication
-AZ
+Alex López-Tello
+Esteban Rueda
+Laura Sanz
+César Garza
