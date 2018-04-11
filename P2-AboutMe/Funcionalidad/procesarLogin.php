@@ -14,7 +14,7 @@
         //Si no existe el usuario
         if ($numRows == 0 ) {
             $_SESSION['login'] = false;
-            header("Location:inicio.php");
+            header("Location:../Vistas/index.php");
             exit;
         }
         //El usuario existe
@@ -32,8 +32,8 @@
     }
     //Si no redirijimos a la pagina inicio para los usuarios logueados
     else {
-        header("Location:inicio.php");
+        header("Location:../Vistas/index.php");
     }
-    
+
     exit;
 ?>
