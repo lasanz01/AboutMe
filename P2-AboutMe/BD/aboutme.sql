@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-04-2018 a las 12:48:27
+-- Tiempo de generación: 11-04-2018 a las 22:01:50
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 5.6.33
 
@@ -29,7 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `archivo` (
-  `nombrer` varchar(30) NOT NULL,
+  `ID_archivo` int(11) NOT NULL,
+  `clave_carpeta` int(11) NOT NULL,
+  `nombre` varchar(32) NOT NULL,
   `texto` varchar(140) NOT NULL,
   `imagen` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -41,9 +43,9 @@ CREATE TABLE `archivo` (
 --
 
 CREATE TABLE `carpeta` (
-  `ID` int(11) NOT NULL,
-  `categoria` varchar(30) NOT NULL,
-  `correo` varchar(32) NOT NULL
+  `ID_Carpeta` int(11) NOT NULL,
+  `categoria_clave` int(11) NOT NULL,
+  `correo_usuario` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -53,8 +55,8 @@ CREATE TABLE `carpeta` (
 --
 
 CREATE TABLE `categorias` (
-  `nombre` enum('Aventura','Gastronomía','Viajes','Compras','Cine','Musica','Libros') NOT NULL,
-  `ID` int(11) NOT NULL
+  `Clave` int(11) NOT NULL,
+  `categoria` enum('Aventura','Gastronomia','Ciencia') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -65,7 +67,7 @@ CREATE TABLE `categorias` (
 
 CREATE TABLE `usuarios` (
   `correo` varchar(32) NOT NULL,
-  `contraseña` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
   `nombreusuario` varchar(30) NOT NULL,
   `tipo` enum('admin','registrado','no_registrado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -74,8 +76,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`correo`, `contraseña`, `nombreusuario`, `tipo`) VALUES
-('10.1.30-MariaDB', '*AC4448900CCA2747E196B39FB7178E62AD4AFA5', 'allopezt', 'registrado');
+INSERT INTO `usuarios` (`correo`, `password`, `nombreusuario`, `tipo`) VALUES
+('allopezt@ucm.es', 'allopezt', 'allopezt', 'registrado');
 
 --
 -- Índices para tablas volcadas
@@ -85,19 +87,23 @@ INSERT INTO `usuarios` (`correo`, `contraseña`, `nombreusuario`, `tipo`) VALUES
 -- Indices de la tabla `archivo`
 --
 ALTER TABLE `archivo`
-  ADD PRIMARY KEY (`nombrer`);
+  ADD PRIMARY KEY (`ID_archivo`) USING BTREE,
+  ADD UNIQUE KEY `clave` (`ID_archivo`,`clave_carpeta`),
+  ADD KEY `clave_carpeta` (`clave_carpeta`);
 
 --
 -- Indices de la tabla `carpeta`
 --
 ALTER TABLE `carpeta`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID_Carpeta`),
+  ADD KEY `correo_usuario` (`correo_usuario`),
+  ADD KEY `categoria_clave_2` (`categoria_clave`);
 
 --
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`Clave`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -113,13 +119,24 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carpeta`
 --
 ALTER TABLE `carpeta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Carpeta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
+-- Restricciones para tablas volcadas
 --
-ALTER TABLE `categorias`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Filtros para la tabla `archivo`
+--
+ALTER TABLE `archivo`
+  ADD CONSTRAINT `archivo_ibfk_1` FOREIGN KEY (`clave_carpeta`) REFERENCES `carpeta` (`ID_Carpeta`);
+
+--
+-- Filtros para la tabla `carpeta`
+--
+ALTER TABLE `carpeta`
+  ADD CONSTRAINT `carpeta_ibfk_1` FOREIGN KEY (`correo_usuario`) REFERENCES `usuarios` (`correo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `carpeta_ibfk_2` FOREIGN KEY (`categoria_clave`) REFERENCES `categorias` (`Clave`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
