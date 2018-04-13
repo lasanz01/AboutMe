@@ -78,20 +78,17 @@
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Username</label>
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Username">
-						<span class="cd-signin-modal__error">Already in use</span>
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail">
-						<span class="cd-signin-modal__error">Already in use</span>
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Password</label>
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Password">
 						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
-						<span class="cd-signin-modal__error">Wrong password</span>
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
