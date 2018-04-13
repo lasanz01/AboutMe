@@ -15,14 +15,7 @@
 	<title>AboutMe Login</title>
 </head>
 <body>
-
-<?php include '../controllers/procesarLogin.php' ?>
-
-<nav>
-		<a href="inicio.php">Inicio</a>
-	<a href="perfil.php">Pefil</a>
-</nav>
-
+	
 	<header class="cd-main-header">
 		<nav class="nav-right">
 			<ul class="cd-main-nav__list right">

@@ -8,9 +8,9 @@
 		if ($_REQUEST['contraseña'] === $_REQUEST['confirmar_contraseña']) {
             $contraseña = htmlspecialchars(trim(strip_tags($_REQUEST["contraseña"])));
             //Hay que guardar la constraseña encriptada
-            $pass = hash('sha256', $contraseña, false);
+          //  $pass = hash('sha256', $contraseña, false);
             $stmt = $mysqli->prepare("UPDATE usuarios SET password = ? WHERE correo = ? ");
-            $stmt->bind_param("ss", $pass, $correo);
+            $stmt->bind_param("ss", $contraseña, $correo);
             $stmt->execute();
             if($stmt != true)
                 echo "Error: " . $stmt . "<br>" . $mysqli->error;

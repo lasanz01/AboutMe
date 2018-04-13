@@ -4,9 +4,9 @@
         $contraseña = htmlspecialchars(trim(strip_tags($_REQUEST["contraseña"])));
 
         include('connect.php');
-        $pass = hash('sha256', $contraseña, false);
+        //$pass = hash('sha256', $contraseña, false);
         $stmt =  $mysqli->prepare("SELECT correo FROM usuarios WHERE correo LIKE ? AND password LIKE ?");
-        $stmt->bind_param("ss", $email, $pass);
+        $stmt->bind_param("ss", $email, $contraseña);
         $stmt->execute();
         $resultado = $stmt->get_result();
         $numRows = $resultado->num_rows;

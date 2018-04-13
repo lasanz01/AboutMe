@@ -14,7 +14,6 @@
 	<a href="perfil.php">Perfil</a>
 </nav>
 
-
 	<div class="content">
 		<div class="contenedor">
 			<div class="cabecera">
@@ -25,7 +24,7 @@
 					<div class="contact-left">
 						<div>
 							<label> Nombre de usuario:</label>
-							<input type='text' name="nombre">
+							<input type='text' name="nombreusuario">
 						</div>
 						<div>
 							<label> Correo:</label>
