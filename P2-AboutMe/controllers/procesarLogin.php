@@ -28,11 +28,11 @@
 
     //Si el usuario es admin le redirijimos a la vista de admin
     if ($email == "admin@gmail.com") {
-        header("Location:admin.php");
+        header("Location:../views/admin.php");
     }
     //Si no redirijimos a la pagina inicio para los usuarios logueados
     else {
-        header("Location:../views/index.php");
+        header("Location:../views/inicio.php");
     }
 
     exit;

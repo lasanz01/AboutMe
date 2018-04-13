@@ -43,6 +43,7 @@
 					<div class="contact-right">
 						<label>Imagen de perfil:</label>
 						<input type="file" name="foto" accept="image/*">
+						<input class="myButton" value="Cambiar" type="submit">
 					</div>
 				</form>
 			</div>
